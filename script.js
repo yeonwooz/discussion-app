@@ -3,46 +3,59 @@
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔줍니다.
 const convertToDiscussion = (obj) => {
-  const { author, avatarUrl, bodyHTML, createdAt, id, title, url, answer } =
-    obj;
+  const { author, avatarUrl, bodyHTML, id, createdAt, url, answer } = obj;
+  let title = obj.title || "제목 없음";
   const li = document.createElement("li"); // li 요소 생성
   li.className = "discussion__container"; // 클래스 이름 지정
 
-  // userInfo
+  // header info
+  const headerInfoArea = document.createElement("div");
+  const headerInfoLeft = document.createElement("div");
+  const headerInfoRight = document.createElement("div");
+  const headerInfoRightTop = document.createElement("div");
+
   const avatarWrapper = document.createElement("div");
   const userId = document.createElement("div");
-  const userInfoArea = document.createElement("div");
   const discussionDate = document.createElement("time");
+  const discussionTitle = document.createElement("h3");
 
+  headerInfoRight.classList.add("header__info__right");
+  headerInfoRightTop.classList.add("header__info__right--top");
   avatarWrapper.className = "discussion__avatar--wrapper";
   avatarWrapper.innerHTML = `<img class='discussion__avatar--img' src=${avatarUrl}  alt="user ${author}'s avatar">`;
-  discussionDate.classList.add('discussion__date');
-  discussionDate.textContent = `${createdAt}`;
+  discussionDate.classList.add("discussion__date");
+  discussionDate.textContent = convertDate(new Date(createdAt));
+  userId.classList.add("user__id");
   userId.textContent = `${id}`;
-  userInfoArea.classList.add("user__info__area");
-  userInfoArea.append(avatarWrapper, userId, discussionDate);
+  headerInfoArea.classList.add("header__info__area");
+  discussionTitle.classList.add("discussion__title__wrapper");
+  discussionTitle.innerHTML = `
+  <div class="discussion__title">
+    <div class="discussion__title--text">${title}</div>
+    <a class="discussion__link" href=${url}>게시글로 이동</a>
+  </div>
+
+  `;
+
+  headerInfoLeft.append(avatarWrapper);
+  headerInfoRightTop.append(userId, discussionDate);
+  headerInfoRight.append(headerInfoRightTop, discussionTitle);
+  headerInfoArea.append(headerInfoLeft, headerInfoRight);
 
   // question
   const discussionContent = document.createElement("div");
-  const discussionTitle = document.createElement("h3");
   discussionContent.className = "discussion__content";
-  discussionTitle.innerHTML = `<a href=${url}>${title}</a>`;
   discussionContent.innerHTML = `${bodyHTML}`;
 
   // answer
   const discussionAnswered = document.createElement("div");
-  discussionAnswered.className = "discussion__answered";
 
   if (answer) {
+    discussionAnswered.className = "discussion__answered";
     discussionAnswered.appendChild(convertToDiscussion(answer));
   }
 
-  li.append(
-    userInfoArea,
-    discussionTitle,
-    discussionContent,
-    discussionAnswered
-  );
+  li.append(headerInfoArea, discussionContent, discussionAnswered);
   return li;
 };
 
@@ -57,3 +70,14 @@ const render = (element) => {
 // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
 const ul = document.querySelector("ul.discussions__container");
 render(ul);
+
+function convertDate(fullDate) {
+  const year = fullDate.getFullYear();
+  const month = fullDate.getMonth() + 1;
+  const date = fullDate.getDate();
+  const hour = fullDate.getHours();
+  const min = fullDate.getMinutes();
+  const sec = fullDate.getSeconds();
+
+  return `${year}년 ${month}월 ${date}일 ${hour}시 ${min}분에 작성`;
+}

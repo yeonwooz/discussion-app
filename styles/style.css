@@ -12,6 +12,10 @@
   word-break: keep-all;
 }
 
+a:visited {
+  text-decoration: none;
+}
+
 input,
 textarea {
   width: 100%;
@@ -88,7 +92,7 @@ main {
 
 .discussion__wrapper {
   width: 100%;
-  background-color: var(--theme-yellow-80);
+  background-color: var(--theme-yellow-60);
   padding: 5%;
   border-radius: 4px;
 }
@@ -117,9 +121,20 @@ ul {
   width: 100%;
 }
 
-.user__info__area {
+.header__info__area {
   display: grid;
-  grid-template-columns: 70px minmax(auto, auto) 1fr;
+  grid-template-columns: 70px 1fr;
+}
+
+.header__info__right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.header__info__right--top {
+  display: grid;
+  grid-template-columns: minmax(auto, auto) 1fr;
 }
 
 .discussion__avatar--img {
@@ -127,13 +142,57 @@ ul {
   max-height: 64px;
 }
 
-.discussion__date {
-  margin-left: 10px;
+.user__id {
   padding-top: 1px;
+  font-weight: 600;
+}
+
+.discussion__date {
+  padding-top: 2px;
+  margin-left: 15px;
   color: var(--gray-600);
   font-size: 16px;
 }
 
+.discussion__title {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(auto, 80%) 100px;
+}
+
+.discussion__title--text {
+  font-weight: 600;
+  font-size: 23px;
+}
+
+.discussion__link {
+  padding: 2px;
+  border: solid 1px var(--theme-blue-100);
+  background-color: var(--theme-blue-100);
+  color: var(--black-100);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .discussion__answered {
   padding: 2% 0 0 2%;
+}
+
+p[dir="auto"] {
+  margin: 10px 0;
+}
+
+p[dir="auto"] > code {
+  background-color: var(--gray-200);
+  padding: 1px 8px;
+  border-radius: 3px;
+}
+
+p[dir="auto"] > pre {
+  background-color: var(--gray-200);
+  border-radius: 4px;
+  margin: 10px 0;
+  padding: 2%;
 }
