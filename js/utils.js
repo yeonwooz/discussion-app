@@ -96,9 +96,14 @@ function convertDate(fullDate) {
   const year = fullDate.getFullYear();
   const month = fullDate.getMonth() + 1;
   const date = fullDate.getDate();
-  const hour = fullDate.getHours();
   const min = fullDate.getMinutes();
-  const sec = fullDate.getSeconds();
+  let hour = fullDate.getHours();
+  if (hour > 12) {
+    hour = `오후 ${hour % 12 || 12}`;
+  } else {
+    hour = `오전 ${hour % 12 || 12}`;
+  }
+  // const sec = fullDate.getSeconds();
 
   return `${year}년 ${month}월 ${date}일 ${hour}시 ${min}분에 작성`;
 }
