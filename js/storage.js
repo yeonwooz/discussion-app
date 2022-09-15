@@ -1,7 +1,6 @@
 const { localStorage } = window;
 
 function setItem(key, value) {
-  console.log(key, value);
   if (typeof key !== "string") {
     key = JSON.stringify(key);
   }
@@ -27,14 +26,23 @@ function clear() {
 function detectLocalStorageUpdate() {
   console.log("detecting");
   if (!getItem("updatedItems")) {
-    return;
+    return false;
+  }
+  console.log("updated detected");
+
+  let prevData;
+  const lastRendered = getItem("lastRendered");
+
+  if (lastRendered) {
+    prevData = JSON.parse(lastRendered);
+  } else {
+    prevData = agoraStatesDiscussions;
   }
 
-  console.log("updated detected");
   const updatedItems = JSON.parse(getItem("updatedItems"));
-  console.log("updated", updatedItems);
+
   for (let item of updatedItems) {
-    agoraStatesDiscussions.unshift({
+    prevData.unshift({
       // id?
       author: item?.author || "작성자 정보 없음",
       createdAt: item?.createdAt || "날짜 기록 없음",
@@ -43,4 +51,5 @@ function detectLocalStorageUpdate() {
       avatarUrl: item?.avatarUrl,
     });
   }
+  return prevData;
 }

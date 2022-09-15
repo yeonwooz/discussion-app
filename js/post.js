@@ -23,5 +23,9 @@ function submit() {
     avatarUrl: "https://picsum.photos/64/64",
   });
   setItem("updatedItems", JSON.stringify(updatedItems));
-  console.log("updatedItems", updatedItems);
+  render();
+  removeItem("updatedItems");
+  username.value = "";
+  title.value = "";
+  story.value = "";
 }
