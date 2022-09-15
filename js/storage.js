@@ -24,11 +24,9 @@ function clear() {
   localStorage.clear();
 }
 function detectLocalStorageUpdate() {
-  console.log("detecting");
   if (!getItem("updatedItems")) {
     return false;
   }
-  console.log("updated detected");
 
   let prevData;
   const lastRendered = getItem("lastRendered");

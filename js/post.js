@@ -6,7 +6,6 @@ const submitButton = document.querySelector("#submit__button");
 submitButton.addEventListener("click", submit);
 
 function submit() {
-  console.log("submit");
   const isoDate = new Date().toISOString();
   let updatedItems = getItem("updatedItems");
   if (updatedItems) {

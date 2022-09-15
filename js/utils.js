@@ -1,5 +1,4 @@
 // index.html을 열어서 agoraStatesDiscussions 배열 요소를 확인하세요.
-// console.log(agoraStatesDiscussions);
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔줍니다.
 const convertToDiscussion = (obj) => {
@@ -62,7 +61,6 @@ const convertToDiscussion = (obj) => {
           spreadButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`;
           li.removeChild(bottomArea);
         }
-        console.log(spread);
       };
     })();
 
