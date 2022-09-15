@@ -8,6 +8,7 @@
 }
 
 body {
+  background-color: rgba(0, 0, 0, 0.02);
   width: 100vw;
   padding: 2% 10%;
   display: flex;
@@ -19,6 +20,11 @@ body {
 main {
   width: 100%;
   margin: 0 auto;
+}
+
+#page__title {
+  text-align: center;
+  font-size: 60px;
 }
 
 .form__container {
