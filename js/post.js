@@ -6,6 +6,21 @@ const submitButton = document.querySelector("#submit__button");
 submitButton.addEventListener("click", submit);
 
 function submit() {
+  if (!username.value) {
+    alert("이름은 필수입니다.");
+    return;
+  }
+
+  if (!title.value) {
+    alert("제목을 적어주세요.");
+    return;
+  }
+
+  if (!story.value) {
+    alert("질문할 내용을 적어주세요.");
+    return;
+  }
+
   const isoDate = new Date().toISOString();
   let updatedItems = getItem("updatedItems");
   if (updatedItems) {
