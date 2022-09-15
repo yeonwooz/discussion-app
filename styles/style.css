@@ -33,14 +33,21 @@ textarea {
   border-radius: 3px;
   font-size: 20px;
 }
+
 body {
   width: 100vw;
-  padding: 2% 10%;
+  padding: 2% 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--theme-skyblue-20);
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding: 2%;
+  }
 }
 
 main {
@@ -76,6 +83,17 @@ main {
 }
 
 /* 질문리스트 */
+
+.discussion__wrapper {
+  background-color: var(--theme-yellow-100);
+}
+
+.section__title {
+  text-align: center;
+  font-size: 30px;
+  margin: 2% 0;
+}
+
 ul {
   list-style-type: none;
 }
