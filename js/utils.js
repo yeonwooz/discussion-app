@@ -31,7 +31,7 @@ const convertToDiscussion = (obj) => {
   if (url) {
     discussionTitle.innerHTML = `
       <div class="discussion__title">
-        <div class="discussion__title--text">${title}</div>
+        <h2 class="discussion__title--text">${title}</h2>
         <a class="discussion__link" href=${url}>게시글로 이동</a>
       </div>`;
   } else {
@@ -46,9 +46,11 @@ const convertToDiscussion = (obj) => {
   headerInfoRight.append(headerInfoRightTop, discussionTitle);
   headerInfoArea.append(headerInfoLeft, headerInfoRight);
 
-  if (bodyHTML) {
-    const spreadButton = document.createElement("button");
+  const spreadButton = document.createElement("button");
+  spreadButton.innerHTML = "<div>...</div>";
 
+  if (bodyHTML) {
+    spreadButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`;
     const toggleSpreadButton = (function (id) {
       let spread = false;
 
@@ -67,7 +69,6 @@ const convertToDiscussion = (obj) => {
     spreadButton.addEventListener("click", toggleSpreadButton.bind(null, id));
 
     spreadButton.classList.add("spread__button");
-    spreadButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`;
     headerInfoArea.append(spreadButton);
   }
 
