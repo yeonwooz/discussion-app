@@ -35,6 +35,7 @@ textarea {
 }
 
 #submit__button {
+  cursor: pointer;
   margin: 0 auto;
   width: 20%;
   background-color: var(--white-100);
