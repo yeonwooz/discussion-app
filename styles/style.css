@@ -12,6 +12,10 @@
   word-break: keep-all;
 }
 
+.hide {
+  display: none;
+}
+
 a:visited {
   text-decoration: none;
 }
@@ -124,6 +128,7 @@ ul {
 .header__info__area {
   display: grid;
   grid-template-columns: 70px 1fr;
+  padding: 0 2%;
 }
 
 .header__info__right {
@@ -167,13 +172,29 @@ ul {
 
 .discussion__link {
   padding: 2px;
-  border: solid 1px var(--theme-blue-100);
   background-color: var(--theme-blue-100);
   color: var(--black-100);
   border-radius: 4px;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
+}
+
+.discussion__link:hover {
+  background-color: var(--theme-skyblue-100);
+  border: solid 3px var(--theme-blue-100);
+}
+
+.spread__button {
+  background: none;
+  border: none;
+  width: 18px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.spread__button:hover {
+  color: var(--red-100);
 }
 
 .discussion__answered {

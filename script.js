@@ -42,6 +42,32 @@ const convertToDiscussion = (obj) => {
   headerInfoRight.append(headerInfoRightTop, discussionTitle);
   headerInfoArea.append(headerInfoLeft, headerInfoRight);
 
+  if (bodyHTML) {
+    const spreadButton = document.createElement("button");
+
+    const toggleSpreadButton = (function (url) {
+      let spread = false;
+
+      return function () {
+        spread = !spread;
+        if (spread) {
+          spreadButton.innerHTML = `<i class="fa-solid fa-caret-down"></i>`;
+          li.append(bottomArea);
+        } else {
+          spreadButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`;
+          li.removeChild(bottomArea);
+        }
+        console.log(spread);
+      };
+    })();
+
+    spreadButton.addEventListener("click", toggleSpreadButton.bind(null, url));
+
+    spreadButton.classList.add("spread__button");
+    spreadButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`;
+    headerInfoArea.append(spreadButton);
+  }
+
   // question
   const discussionContent = document.createElement("div");
   discussionContent.className = "discussion__content";
@@ -55,7 +81,10 @@ const convertToDiscussion = (obj) => {
     discussionAnswered.appendChild(convertToDiscussion(answer));
   }
 
-  li.append(headerInfoArea, discussionContent, discussionAnswered);
+  const bottomArea = document.createElement("div");
+  bottomArea.append(discussionContent, discussionAnswered);
+
+  li.append(headerInfoArea);
   return li;
 };
 
