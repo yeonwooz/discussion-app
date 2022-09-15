@@ -34,13 +34,18 @@ textarea {
   font-family: "Nanum Gothic Coding", monospace;
 }
 
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .form__submit {
   display: flex;
   justify-content: center;
 }
 
 #submit__button {
-  cursor: pointer;
   margin: 0 auto;
   width: 20%;
   background-color: var(--white-100);
@@ -222,4 +227,19 @@ p[dir="auto"] > pre {
   border-radius: 4px;
   margin: 10px 0;
   padding: 2%;
+}
+
+/* 페이지네이션 */
+.pagination {
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  margin: 0 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--theme-blue-80);
 }

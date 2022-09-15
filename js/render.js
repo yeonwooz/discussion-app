@@ -1,10 +1,8 @@
-// agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
-const render = () => {
-  // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
-  const ul = document.querySelector("ul.discussions__container");
+let { pathname } = document.location;
+const pagination = document.querySelector(".pagination");
 
-  let data;
-
+let data = "";
+function loadData() {
   const detectedUpdate = detectLocalStorageUpdate();
   if (detectedUpdate) {
     data = detectedUpdate;
@@ -16,11 +14,49 @@ const render = () => {
       data = agoraStatesDiscussions;
     }
   }
+}
 
-  setItem("lastRendered", JSON.stringify(data));
+function showPagination() {
+  pagination.innerHTML = "";
+  const cnts = Math.ceil(data.length / 10);
+
+  for (let i = 0; i < cnts; ++i) {
+    const num = document.createElement("button");
+    num.textContent = i + 1;
+    num.classList.add("page");
+    pagination.append(num);
+
+    num.addEventListener("click", routePage.bind(null, i + 1));
+  }
+  // pagination.innerHTML
+}
+
+// agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수입니다.
+const render = () => {
+  loadData();
+  showPagination();
+  // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
+  const ul = document.querySelector("ul.discussions__container");
+  const currentPageNumber = pathname === "/" ? 1 : Number(pathname);
+  let from = (currentPageNumber - 1) * 10;
+  let to = currentPageNumber * 10 - 1;
+
   ul.innerHTML = "";
-  for (let i = 0; i < data.length; i += 1) {
+  for (let i = from; i < data.length && i < to; i++) {
     ul.append(convertToDiscussion(data[i]));
+  }
+  if (data.length > 1) {
+    setItem("lastRendered", JSON.stringify(data));
   }
   return;
 };
+
+function routePage(targetPageNumber) {
+  // if (targetPageNumber === 1) {
+  //   document.location.pathname = "/";
+  // } else {
+  //   document.location.pathname = targetPageNumber.toString();
+  // }
+  pathname = targetPageNumber;
+  render();
+}
