@@ -113,6 +113,7 @@ main {
 }
 
 .discussion__answered {
+  padding: 2% 0 0 2%;
   width: 100%;
   background-color: var(--theme-orange-100);
   border-radius: 4px;
@@ -130,6 +131,11 @@ ul {
 
 .discussion__container {
   margin-bottom: 5%;
+  border-bottom: solid 1px var(--gray-400);
+}
+
+.discussion__answered > .discussion__container {
+  border-bottom: none;
 }
 
 .discussion__content > * {
@@ -151,7 +157,8 @@ ul {
 .header__info__right--top {
   padding-top: 2px;
   display: grid;
-  grid-template-columns: minmax(auto, auto) minmax(auto, auto) 1fr;
+  /* grid-template-columns: minmax(auto, auto) 100px 1fr; */
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .discussion__avatar--img {
@@ -164,14 +171,14 @@ ul {
 }
 
 .discussion__date {
-  margin-left: 15px;
+  margin-top: 4px;
+  margin-left: 10px;
   color: var(--gray-600);
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .checkout__answer {
-  margin-top: -5px;
-  margin-left: 8px;
+  margin-top: -10px;
   border: solid 3px var(--peach-500);
   width: 100px;
   text-align: center;
@@ -217,10 +224,6 @@ ul {
 
 .spread__button:hover {
   color: var(--red-100);
-}
-
-.discussion__answered {
-  padding: 2% 0 0 2%;
 }
 
 p[dir="auto"] {
