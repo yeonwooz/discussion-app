@@ -2,8 +2,10 @@ const username = document.querySelector("#username");
 const title = document.querySelector("#title");
 const story = document.querySelector("#story");
 const submitButton = document.querySelector("#submit__button");
+const form = document.querySelector("form");
 
 submitButton.addEventListener("click", submit);
+form.addEventListener("keypress", keyPress);
 
 function submit() {
   if (!username.value) {
@@ -42,4 +44,11 @@ function submit() {
   username.value = "";
   title.value = "";
   story.value = "";
+}
+
+function keyPress(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submit();
+  }
 }
