@@ -35,13 +35,16 @@ function showPagination() {
 const render = () => {
   loadData();
   showPagination();
+
   // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
   const ul = document.querySelector("ul.discussions__container");
-  const currentPageNumber = pathname === "/" ? 1 : Number(pathname);
+  const currentPageNumber =
+    pathname === "/" || pathname === "/index.html" ? 1 : Number(pathname);
   let from = (currentPageNumber - 1) * 10;
   let to = currentPageNumber * 10 - 1;
 
   ul.innerHTML = "";
+
   for (let i = from; i < data.length && i < to; i++) {
     ul.append(convertToDiscussion(data[i]));
   }
