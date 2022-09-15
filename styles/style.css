@@ -1,22 +1,37 @@
 /* TODO: 보기 좋은 나만의 아고라 스테이츠를 위해서 CSS를 수정하세요. */
+
+/* 레이아웃 */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
   font-family: "Hi Melody", sans-serif;
+  font-size: 20px;
   outline: none;
 }
 
 input,
 textarea {
   width: 100%;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-bottom: 8px;
+  background-color: var(--white-100);
+  border: solid 2px var(--black-100);
+  border-radius: 3px;
+  font-size: 15px;
+  font-family: "Nanum Gothic Coding", monospace;
+}
+
+#submit__button {
+  margin: 0 auto;
+  width: 20%;
   background-color: var(--white-100);
   border: solid 2px var(--black-100);
   border-radius: 3px;
   font-size: 20px;
 }
-
 body {
   width: 100vw;
   padding: 2% 10%;
@@ -37,10 +52,19 @@ main {
   font-size: 60px;
 }
 
+/* 질문 폼 */
 .form__container {
   background-color: var(--theme-blue-50);
   border-radius: 4px;
   padding: 2%;
+}
+
+.form__field {
+  margin: 10px 0;
+}
+
+input {
+  margin-top: 5px;
 }
 
 #story {
@@ -50,6 +74,11 @@ main {
   overflow-y: scroll;
 }
 
+.disabled__button {
+  background-color: gray;
+}
+
+/* 질문리스트 */
 ul {
   list-style-type: none;
 }
