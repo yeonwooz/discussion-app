@@ -1,6 +1,5 @@
 let queryString = document.location.search?.slice(1);
 const pagination = document.querySelector(".pagination");
-console.log(queryString);
 let data = "";
 function loadData() {
   const detectedUpdate = detectLocalStorageUpdate();
