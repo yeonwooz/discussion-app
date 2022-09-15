@@ -16,6 +16,8 @@ const convertToDiscussion = (obj) => {
   const avatarWrapper = document.createElement("div");
   const userId = document.createElement("div");
   const discussionDate = document.createElement("time");
+  const checkoutAnswer = document.createElement("div");
+
   const discussionTitle = document.createElement("h3");
 
   headerInfoRight.classList.add("header__info__right");
@@ -24,6 +26,14 @@ const convertToDiscussion = (obj) => {
   avatarWrapper.innerHTML = `<img class='discussion__avatar--img' src=${avatarUrl}  alt="user ${author}'s avatar">`;
   discussionDate.classList.add("discussion__date");
   discussionDate.textContent = convertDate(new Date(createdAt));
+  if (answer) {
+    checkoutAnswer.innerHTML = `
+    <div class="checkout__answer">
+      답변 완료 v
+    </div>
+    `;
+  }
+
   userId.classList.add("user__id");
   userId.textContent = `${author}`;
   headerInfoArea.classList.add("header__info__area");
@@ -42,7 +52,7 @@ const convertToDiscussion = (obj) => {
   }
 
   headerInfoLeft.append(avatarWrapper);
-  headerInfoRightTop.append(userId, discussionDate);
+  headerInfoRightTop.append(userId, discussionDate, checkoutAnswer);
   headerInfoRight.append(headerInfoRightTop, discussionTitle);
   headerInfoArea.append(headerInfoLeft, headerInfoRight);
 

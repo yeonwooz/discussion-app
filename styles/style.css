@@ -149,8 +149,9 @@ ul {
 }
 
 .header__info__right--top {
+  padding-top: 2px;
   display: grid;
-  grid-template-columns: minmax(auto, auto) 1fr;
+  grid-template-columns: minmax(auto, auto) minmax(auto, auto) 1fr;
 }
 
 .discussion__avatar--img {
@@ -159,15 +160,25 @@ ul {
 }
 
 .user__id {
-  padding-top: 1px;
   font-weight: 600;
 }
 
 .discussion__date {
-  padding-top: 2px;
   margin-left: 15px;
   color: var(--gray-600);
   font-size: 16px;
+}
+
+.checkout__answer {
+  margin-top: -5px;
+  margin-left: 8px;
+  border: solid 3px var(--peach-500);
+  width: 100px;
+  text-align: center;
+  border-bottom-left-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
 }
 
 .discussion__title {
