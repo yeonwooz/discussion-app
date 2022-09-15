@@ -1,6 +1,6 @@
-let { pathname } = document.location;
+let queryString = document.location.search?.slice(1);
 const pagination = document.querySelector(".pagination");
-
+console.log(queryString);
 let data = "";
 function loadData() {
   const detectedUpdate = detectLocalStorageUpdate();
@@ -38,8 +38,9 @@ const render = () => {
 
   // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링합니다.
   const ul = document.querySelector("ul.discussions__container");
-  const currentPageNumber =
-    pathname === "/" || pathname === "/index.html" ? 1 : Number(pathname);
+  const currentPageNumber = !queryString
+    ? 1
+    : Number(queryString.split("=")[1]);
   let from = (currentPageNumber - 1) * 10;
   let to = currentPageNumber * 10 - 1;
 
@@ -60,6 +61,5 @@ function routePage(targetPageNumber) {
   // } else {
   //   document.location.pathname = targetPageNumber.toString();
   // }
-  pathname = targetPageNumber;
-  render();
+  document.location.search = `?page=${targetPageNumber}`;
 }
