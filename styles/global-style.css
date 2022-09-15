@@ -1,0 +1,10 @@
+:root {
+  --white-100: rgba(255, 255, 255, 1);
+  --black-100: rgba(0, 0, 0, 1);
+  --theme-skyblue-100: rgba(195, 248, 255, 1);
+  --theme-skyblue-20: rgba(195, 248, 255, 0.2);
+  --theme-blue-100: rgba(171, 217, 255, 1);
+  --theme-blue-50: rgba(171, 217, 255, 0.5);
+  --theme-yellow-100: rgba(255, 246, 191, 1);
+  --theme-orange-100: rgba(255, 235, 173, 1);
+}
