@@ -1,10 +1,22 @@
 :root {
-  --white-100: rgba(255, 255, 255, 1);
-  --black-100: rgba(0, 0, 0, 1);
   --theme-skyblue-100: rgba(195, 248, 255, 1);
   --theme-skyblue-20: rgba(195, 248, 255, 0.2);
   --theme-blue-100: rgba(171, 217, 255, 1);
   --theme-blue-50: rgba(171, 217, 255, 0.5);
   --theme-yellow-100: rgba(255, 246, 191, 1);
+  --theme-yellow-80: rgba(255, 246, 191, 0.8);
   --theme-orange-100: rgba(255, 235, 173, 1);
+  --black-100: rgba(0, 0, 0, 1);
+  --white-100: rgba(255, 255, 255, 1);
+  --gray-10: #f7f7f7;
+  --gray-50: #f2f2f2;
+  --gray-100: #f0f0f0;
+  --gray-200: #e6e6e6;
+  --gray-300: #d6d6d6;
+  --gray-400: #c2c2c2;
+  --gray-500: #a3a3a3;
+  --gray-600: #858585;
+  --gray-700: #5c5c5c;
+  --gray-800: #333333;
+  --gray-900: #141414;
 }

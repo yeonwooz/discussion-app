@@ -3,41 +3,43 @@
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔줍니다.
 const convertToDiscussion = (obj) => {
-  // TODO: 객체 하나에 담긴 정보를 DOM에 적절히 넣어주세요.
   const { author, avatarUrl, bodyHTML, createdAt, id, title, url, answer } =
     obj;
   const li = document.createElement("li"); // li 요소 생성
   li.className = "discussion__container"; // 클래스 이름 지정
 
+  // userInfo
   const avatarWrapper = document.createElement("div");
+  const userId = document.createElement("div");
+  const userInfoArea = document.createElement("div");
+  const discussionDate = document.createElement("time");
+
   avatarWrapper.className = "discussion__avatar--wrapper";
+  avatarWrapper.innerHTML = `<img class='discussion__avatar--img' src=${avatarUrl}  alt="user ${author}'s avatar">`;
+  discussionDate.classList.add('discussion__date');
+  discussionDate.textContent = `${createdAt}`;
+  userId.textContent = `${id}`;
+  userInfoArea.classList.add("user__info__area");
+  userInfoArea.append(avatarWrapper, userId, discussionDate);
+
+  // question
   const discussionContent = document.createElement("div");
+  const discussionTitle = document.createElement("h3");
   discussionContent.className = "discussion__content";
+  discussionTitle.innerHTML = `<a href=${url}>${title}</a>`;
+  discussionContent.innerHTML = `${bodyHTML}`;
+
+  // answer
   const discussionAnswered = document.createElement("div");
   discussionAnswered.className = "discussion__answered";
 
-  // custom
-  const discussionTitle = document.createElement("h3");
-  const discussionDate = document.createElement("time");
-  const userId = document.createElement("div");
-
-  // TODO: 레이아웃 지정
-
-  avatarWrapper.innerHTML = `<img class='discussion__avatar--img' src=${avatarUrl}  alt="user ${author}'s avatar">`;
-  userId.textContent = `${id}`;
-
-  discussionTitle.innerHTML = `<a href=${url}>${title}</a>`;
-  discussionDate.textContent = `${createdAt}`;
-  discussionContent.innerHTML = `${bodyHTML}`;
   if (answer) {
     discussionAnswered.appendChild(convertToDiscussion(answer));
   }
 
   li.append(
-    avatarWrapper,
-    userId,
+    userInfoArea,
     discussionTitle,
-    discussionDate,
     discussionContent,
     discussionAnswered
   );
