@@ -1,4 +1,6 @@
 let queryString = document.location.search?.slice(1);
+const { pathname } = document.location;
+
 const pagination = document.querySelector(".pagination");
 let data = "";
 function loadData() {
@@ -60,5 +62,15 @@ function routePage(targetPageNumber) {
   // } else {
   //   document.location.pathname = targetPageNumber.toString();
   // }
-  document.location.search = `?page=${targetPageNumber}`;
+  let currentPageNumber =
+    !queryString || pathname === "/index.html"
+      ? 1
+      : Number(queryString.split("=")[1]);
+
+  if (currentPageNumber === targetPageNumber) return;
+
+  document.location.href =
+    document.location.origin + `?page=${targetPageNumber}`;
+
+  // document.location.search = `?page=${targetPageNumber}`;
 }
