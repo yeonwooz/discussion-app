@@ -38,6 +38,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--black-100);
 }
 
 .form__submit {
@@ -47,6 +48,7 @@ button {
 
 #submit__button {
   margin: 0 auto;
+  height: 40px;
   width: 20%;
   background-color: var(--white-100);
   border: solid 2px var(--black-100);
@@ -54,10 +56,16 @@ button {
   font-size: 20px;
 }
 
+@media (max-width: 1100px) {
+  #submit__button {
+    width: 200px;
+  }
+}
+
 body {
   width: 100vw;
   padding-top: 2%;
-  padding-bottom: 2%;
+  padding-bottom: 10%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -99,6 +107,7 @@ main {
   background-color: var(--theme-blue-50);
   border-radius: 4px;
   padding: 2%;
+  margin-bottom: 20%;
 }
 
 .form__field {
@@ -119,6 +128,7 @@ main {
 /* 질문리스트 */
 
 .discussion__wrapper {
+  margin-top: 10%;
   width: 100%;
   background-color: var(--theme-yellow-60);
   padding: 5%;
@@ -174,6 +184,13 @@ ul {
   grid-template-columns: 1fr 3fr 1fr;
 }
 
+@media (max-width: 1100px) {
+  .header__info__right--top {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
 .discussion__avatar--img {
   max-width: 64px;
   max-height: 64px;
@@ -190,6 +207,18 @@ ul {
   font-size: 13px;
 }
 
+@media (max-width: 1100px) {
+  .discussion__date {
+    margin-left: 0;
+    font-size: 17px;
+  }
+
+  .user__id {
+    font-size: 25px;
+    font-weight: 600;
+  }
+}
+
 .checkout__answer {
   margin-top: -10px;
   border: solid 3px var(--peach-500);
@@ -201,10 +230,16 @@ ul {
   border-top-right-radius: 50% 50%;
 }
 
+@media (max-width: 1100px) {
+  .checkout__answer {
+    margin-top: 0;
+  }
+}
+
 .discussion__title {
   display: grid;
   align-items: center;
-  grid-template-columns: minmax(auto, 80%) 100px;
+  grid-template-columns: minmax(50px, 80%) 100px;
 }
 
 .discussion__title--text {
@@ -265,8 +300,9 @@ p[dir="auto"] > pre {
 
 .page {
   margin: 0 10px;
-  width: 20px;
-  height: 20px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: var(--theme-blue-80);
+  font-size: 30px;
 }
