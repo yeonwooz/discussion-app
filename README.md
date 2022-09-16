@@ -1,4 +1,4 @@
-# fe-sprint-my-agora-states
+# Discussion App
 
 ### 폼 작성 및 데이터 추가
 
