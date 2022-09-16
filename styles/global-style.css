@@ -1,6 +1,7 @@
 :root {
   --theme-skyblue-100: rgba(195, 248, 255, 1);
   --theme-skyblue-80: rgba(195, 248, 255, 0.8);
+  --theme-skyblue-50: rgba(195, 248, 255, 0.5);
   --theme-skyblue-20: rgba(195, 248, 255, 0.2);
   --theme-blue-100: rgba(171, 217, 255, 1);
   --theme-blue-80: rgba(171, 217, 255, 0.8);

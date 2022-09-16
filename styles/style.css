@@ -306,3 +306,13 @@ p[dir="auto"] > pre {
   background-color: var(--theme-blue-80);
   font-size: 30px;
 }
+
+.page:hover {
+  background-color: var(--white-100);
+  border: solid 5px var(--theme-blue-100);
+}
+
+.current {
+  background-color: var(--theme-skyblue-50);
+  border: solid 3px var(--theme-blue-100);
+}

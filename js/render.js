@@ -25,6 +25,15 @@ function showPagination() {
     const num = document.createElement("button");
     num.textContent = i + 1;
     num.classList.add("page");
+
+    let currentPageNumber =
+      !queryString || pathname === "/index.html"
+        ? 1
+        : Number(queryString.split("=")[1]);
+    if (i + 1 === currentPageNumber) {
+      num.classList.add("current");
+    }
+
     pagination.append(num);
 
     num.addEventListener("click", routePage.bind(null, i + 1));
